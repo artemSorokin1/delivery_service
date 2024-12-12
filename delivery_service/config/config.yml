@@ -1,0 +1,11 @@
+server:
+  PORT: "8083"
+
+storage:
+  DATABASE_NAME: "delivery"
+  DATABASE_PORT: "5433"
+  DATABASE_USERNAME: "admin"
+  DATABASE_PASSWORD: "123"
+  DATABASE_HOST: "host.docker.internal"
+
+GRPC_PORT: "8082"
