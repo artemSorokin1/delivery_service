@@ -1,6 +1,9 @@
 package models
 
-import "time"
+import (
+	"github.com/lib/pq"
+	"time"
+)
 
 type User struct {
 	ID       int
@@ -10,12 +13,12 @@ type User struct {
 }
 
 type Product struct {
-	ID          int
-	Name        string
-	Price       int
-	Sizes       []int
-	ImageURL    string
-	Description string
+	ID          int           `db:"id"`
+	Name        string        `db:"name"`
+	Price       int           `db:"price"`
+	Sizes       pq.Int64Array `db:"sizes"`
+	ImageURL    string        `db:"imageurl"`
+	Description string        `db:"description"`
 }
 
 type Order struct {
@@ -27,4 +30,17 @@ type Order struct {
 type Courier struct {
 	CourierID int
 	Sex       string
+}
+
+type CartItem struct {
+	ProductId int    `db:"product_id" json:"productId"`
+	Name      string `db:"name" json:"name"`
+	Price     int    `db:"price" json:"price"`
+	Size      int    `db:"size" json:"size"`
+	ImageURL  string `db:"imageurl" json:"imageURL"`
+}
+
+type CartInfo struct {
+	ProductId int64 `db:"product_id"`
+	Size      int64 `db:"size"`
 }

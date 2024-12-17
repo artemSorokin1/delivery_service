@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"dlivery_service/delivery_service/internal/config"
+	"dlivery_service/delivery_service/internal/repository/storage"
 	"dlivery_service/delivery_service/pkg/logger"
 	"dlivery_service/delivery_service/pkg/server"
 )
@@ -18,7 +19,12 @@ func main() {
 
 	cfg := config.New()
 
-	serv := server.New(ctx)
+	stor, err := storage.New(cfg)
+	if err != nil {
+		panic(err)
+	}
+
+	serv := server.New(ctx, stor)
 
 	serv.MustRun(cfg)
 

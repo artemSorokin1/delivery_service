@@ -3,9 +3,9 @@ server:
 
 storage:
   DATABASE_NAME: "delivery"
-  DATABASE_PORT: "5433"
+  DATABASE_PORT: "5432"
   DATABASE_USERNAME: "admin"
   DATABASE_PASSWORD: "123"
-  DATABASE_HOST: "host.docker.internal"
+  DATABASE_HOST: "localhost"
 
 GRPC_PORT: "8082"
